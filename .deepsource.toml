@@ -1,7 +1,21 @@
 version = 1
 
+test_patterns = ["test/**"]
+
+[[analyzers]]
+name = "secrets"
+
 [[analyzers]]
 name = "javascript"
 
+  [analyzers.meta]
+  plugins = [
+    "react",
+    "angularjs"
+  ]
+
 [[analyzers]]
 name = "ruby"
+
+[[transformers]]
+name = "rubocop"
