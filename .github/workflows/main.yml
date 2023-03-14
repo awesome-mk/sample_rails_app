@@ -12,7 +12,7 @@ jobs:
 
       - name: Report results to DeepSource
         run: |
-        bundle exec rspec
+        bundle exec rake rspec
         curl https://deepsource.io/cli | sh
         ./bin/deepsource report --analyzer test-coverage --key ruby --value-file coverage/.resultset.json
 
