@@ -14,9 +14,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.5
+      - name: Install dependencies
+        run: |
+          bundle install -j8    
       - name: Run tests
         run: |
-          bundle install && bundle exec rspec
+          bundle exec rspec
       - name: Report results to DeepSource
         run: |
           curl https://deepsource.io/cli | sh
