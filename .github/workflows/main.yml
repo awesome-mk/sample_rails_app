@@ -10,11 +10,17 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.5
+      - name: Run tests
+        run: |
+          bundle exec rake rspec
       - name: Report results to DeepSource
         run: |
-        bundle exec rake rspec
-        curl https://deepsource.io/cli | sh
-        ./bin/deepsource report --analyzer test-coverage --key ruby --value-file coverage/.resultset.json
+          curl https://deepsource.io/cli | sh
+          ./bin/deepsource report --analyzer test-coverage --key ruby --value-file coverage/.resultset.json
 
         env:
           DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
