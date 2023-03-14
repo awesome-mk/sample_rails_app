@@ -16,7 +16,7 @@ jobs:
           ruby-version: 3.0.5
       - name: Run tests
         run: |
-          bundle exec rake rspec
+          bundle exec rspec
       - name: Report results to DeepSource
         run: |
           curl https://deepsource.io/cli | sh
